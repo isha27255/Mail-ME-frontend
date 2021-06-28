@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
-import Navbar from "../Navbar.component";
+import classes from '../Form.module.css'
+import '../main.css'
 class Login extends React.Component {
   constructor() {
     super();
@@ -54,62 +55,64 @@ class Login extends React.Component {
     const { errors } = this.state;
 
     return (
-      <div className="container">
-       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                 <NavLink to="/" exact className="navbar-brand">MailME</NavLink>
-                </nav>
-        <div style={{ marginTop: "4rem" }} className="row">
-          <div className="col s8 offset-s2">
-            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-             <h1>Login</h1>
-              <p className="grey-text text-darken-1">
-                Don't have an account? <NavLink to="/register">Register</NavLink>
-              </p>
-            </div>
-            <form noValidate onSubmit={this.onSubmit}>
-              <div className="form-group">
-                <label>Email : </label>
-                <input
-                  onChange={this.onChange}
-                  value={this.state.email}
-                  error={errors.email}
-                  id="email"
-                  type="email"
-                  className={classnames("form-control", {
-                    invalid: errors.email || errors.emailnotfound
-                  })}
-                />
-                <span className="red-text">
-                  {errors.email}
-                  {errors.emailnotfound}
-                </span>
-              </div>
-              <div className="form-group">
-                <label>Password : </label>
-                <input
-                  onChange={this.onChange}
-                  value={this.state.password}
-                  error={errors.password}
-                  id="password"
-                  type="password"
-                  className={classnames("form-control", {
-                    invalid: errors.password || errors.passwordincorrect
-                  })}
-                />
-                <span className="red-text">
-                  {errors.password}
-                  {errors.passwordincorrect}
-                </span>
-              </div>
-              <div className="form-group">
-                        <input type="submit" value="Login" className="btn btn-warning btn-lg"></input>
-                    </div>
-            
-             
-            </form>
-          </div>
-        </div>
-      </div>
+      <div className={classes.full}>
+      <nav class="navbar navbar-expand-lg navbar-custom">
+       <NavLink to="/" exact className="navbar-brand">MailME</NavLink>
+      </nav>
+      <div className={classes.loginboxs}>
+     <div className={classes.formouter}>
+     <div>
+       <h1 className={classes.formh1}>Mailer Login</h1>
+       <br></br><br></br>
+       <div>
+           <form onSubmit = {this.onSubmit} >
+             <label htmlFor="email" className={classes.formlabel}>
+               <input
+                 onChange={this.onChange}
+                 value={this.state.email}
+                 error={errors.email}
+                 id="email"
+                 type="email"
+                 placeholder="Email"
+                 className={classnames(classes.forminput, {
+                   invalid: errors.email || errors.emailnotfound
+                 })}
+               />
+               <span className={classes.formspan}>Email</span>
+             </label>
+             <br></br>
+             <label htmlFor="password" className={classes.formlabel}>
+               <input
+                   onChange={this.onChange}
+                   value={this.state.password}
+                   error={errors.password}
+                   id="password"
+                   type="password"
+                   placeholder="Password"
+                   className={classnames(classes.forminput, {
+                     invalid: errors.password || errors.passwordincorrect
+                   })}
+                 />
+                 <span className={classes.formspan}>Password</span>
+             </label>
+             <br></br>
+             <span className="red-text">
+               {errors.patientID}
+               {errors.patientnotfound}
+             </span>
+             <span className="red-text">
+               {errors.password}
+               {errors.passwordincorrect}
+             </span>
+             <div>
+               <button type="submit" className={classes.formsubmit}>Login</button>
+             </div>
+           </form>
+       </div>
+     </div>
+   </div>
+   </div>
+   </div>
     );
   }
 }

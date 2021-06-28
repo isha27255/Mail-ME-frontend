@@ -3,7 +3,9 @@ import Datepicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from "axios";
 import Navbar from './Navbar.component';
-
+import TimePicker from 'react-time-picker';
+import './main.css'
+import classes from './Form.module.css'
 export class create_mail extends Component {
 
     constructor(props) {
@@ -25,7 +27,7 @@ export class create_mail extends Component {
             cc: "",
             subject: "",
             schedule: "",
-            date: "",
+            date: new Date(),
             time: "",
             recur: 0,
             weekly_day: 0,
@@ -75,9 +77,9 @@ export class create_mail extends Component {
           mail_body : e.target.value
         });
     }
-    onChangeDate(e) {
+    onChangeDate(date) {
         this.setState({
-            date: e.target.value
+            date: date
         });
     }
 
@@ -102,7 +104,7 @@ export class create_mail extends Component {
           .then(res => console.log(res.data))
           .catch(err => console.error(err));
 
-          window.location = '/';
+          window.location = '/landing';
         // console.log(exc);
     }
     
@@ -111,114 +113,110 @@ export class create_mail extends Component {
         return (
             <div>
                 <Navbar/>
-                <div className="container">
+                <div className={classes.loginboxis}>
                     <br></br>
-                <h1>Create New Mail</h1>
+                <h1 style={{textAlign: 'center'}}>Create New Mail</h1>
                 <br></br>
-                <form onSubmit={this.onSubmit}>
+                <form onSubmit={this.onSubmit} style={{marginLeft: '10%'}}>
                     <div className="form-group">
-                        <label>to : </label>
+                        <label className="s">to : </label>
                         <input 
                         type="text"
                         required
-                        className="form-control"
+                        className="form-control str"
                         value={this.state.to}
                         onChange={this.onChangeTo}></input>
                     </div>
-                    <br></br>
+                    {/* <br></br> */}
                     <div className="form-group">
-                        <label>cc : </label>
+                        <label className="s">cc : </label>
                         <input 
                         type="text"
                         required
-                        className="form-control"
+                        className="form-control str"
                         value={this.state.cc}
                         onChange={this.onChangeCc}></input>
                     </div>
-                    <br></br>
+                    {/* <br></br> */}
                     <div className="form-group">
-                        <label>subject : </label>
+                        <label className="s">subject : </label>
                         <input 
                         type="text"
                         required
-                        className="form-control"
+                        className="form-control str"
                         value={this.state.subject}
                         onChange={this.onChangeSubject}></input>
                     </div>
-                    <br></br>
+                    {/* <br></br> */}
                     <div className="form-group">
-                        <label>schedule : </label>
+                        <label className="s">schedule : </label>
                         <input 
                         type="text"
                         required
-                        className="form-control"
+                        className="form-control str"
                         value={this.state.schedule}
                         onChange={this.onChangeSchedule}></input>
                     </div>
-                    <br></br>
+                    {/* <br></br> */}
                     <div className="form-group">
-                        <label>recur time : </label>
+                        <label className="s">recur time : </label>
                         <input 
                         type="text"
                         required
-                        className="form-control"
+                        className="form-control str"
                         value={this.state.recur}
                         onChange={this.onChangeRecur}></input>
                     </div>
-                    <br></br>
+                    {/* <br></br> */}
                     <div className="form-group">
-                        <label>Date : </label>
+                        <label className="s">Time : </label>
                         <input 
                         type="text"
                         required
-                        className="form-control"
-                        value={this.state.date}
-                        onChange={this.onChangeDate}></input>
-                    </div>
-                    <br></br>
-                    <div className="form-group">
-                        <label>Time : </label>
-                        <input 
-                        type="text"
-                        required
-                        className="form-control"
+                        className="form-control str"
                         value={this.state.time}
                         onChange={this.onChangeTime}></input>
                     </div>
-                    <br></br>
+                    {/* <br></br> */}
                     <div className="form-group">
-                        <label>Weekly Day : </label>
+                        <label className="s">Weekly Day : </label>
                         <input 
                         type="text"
                         required
-                        className="form-control"
+                        className="form-control str"
                         value={this.state.weekly_day}
                         onChange={this.onChangeWeeklyDay}></input>
                     </div>
-                    <br></br>
+                    {/* <br></br> */}
                     <div className="form-group">
-                        <label>Body : </label>
+                        <label className="s">Body : </label>
+                        
                         <input 
                         type="text"
                         required
-                        className="form-control"
+                        className="form-control str"
                         value={this.state.mail_body}
                         onChange={this.onChangeBody}></input>
+                       
                     </div>
-                    <br></br>
-                    <br></br>
-                    {/* <div className="form-group">
-                        <label>Date : </label>
+                    {/* <br></br> */}
+                    {/* <br></br> */}
+                    <div className="form-group">
+                        <label className="s">Date : </label>
+                        <br></br>
                        <Datepicker
                        selected={this.state.date}
                        onChange={this.onChangeDate}>
                        </Datepicker>
-                    </div> */}
-                    <br></br>
-                    <div className="form-group">
-                        <input type="submit" value="Create" className="btn btn-warning btn-lg"></input>
                     </div>
+                    <br></br>
+                 
+                    <div className="form-group">
+                        <input type="submit" value="Send" className={classes.formsubmits}></input>
+                    </div>
+                    <br></br> <br></br> <br></br>
                 </form>
+                <br></br><br></br>
                 </div>
                  </div>
         )

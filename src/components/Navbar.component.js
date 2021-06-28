@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import jwt_decode from "jwt-decode";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js'
+import  './main.css'
 export class Navbar extends Component {
 
     onLogoutClick = e => {
@@ -21,7 +24,6 @@ export class Navbar extends Component {
 
         const token = localStorage.jwtToken;
         const decoded = jwt_decode(token);
-        console.log(decoded);
         fetch(`http://localhost:4000/USERS/${decoded.id}`)
         .then((response) => response.json())
         .then((data2) => { 
@@ -32,25 +34,27 @@ export class Navbar extends Component {
         const { user } = this.props.auth;
        
         return (
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-custom">
                 <div class="container-fluid">
                     <NavLink to="/landing" className="navbar-brand">MailMe</NavLink>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <NavLink to="/" className="nav-link">Home</NavLink>
+                    <NavLink to={"/"+user.id+"/home"} className="nav-link">Home</NavLink>
                 </li>
                 <li class="nav-item">
-                        <NavLink to="/" className="nav-link">History</NavLink>
+                        <NavLink to={"/"+user.id+"/history"} className="nav-link">History</NavLink>
                 </li> 
                 <li class="nav-item">
                         <NavLink to={"/createMail/"+user.id} className="nav-link">Create-Mail</NavLink>
                 </li>
+                </ul>
+                <ul class="navbar-nav my-2 my-lg-0">
                 <li class="nav-item">
-                        <NavLink to="" className="nav-link">{this.state.username}</NavLink>
+                        <NavLink to="/landing" className="nav-link">{this.state.username}</NavLink>
                 </li>
                 <li class="nav-item">
                         {/* <NavLink to="http://localhost:3000" className="nav-link">Logout</NavLink> */}
@@ -60,35 +64,6 @@ export class Navbar extends Component {
                 </ul>
                 </div>
                 </div>
-            {/* <div class="container-fluid">
-                <NavLink to="/patient" exact activeStyle={{fontWeight: "bold",color: "#104e8b"}} className="navbar-brand"  style={{color: "#104e8b"}}>Doracle</NavLink>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <NavLink to={"/patient/"+user.patientID} exact activeStyle={{fontWeight: "bold",color: "white"}} className="nav-link" style={{color: "white"}}>Profile</NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink to={"/patient/"+user.patientID+"/update"} exact activeStyle={{fontWeight: "bold",color: "white"}} className="nav-link" style={{color: "white"}}>Update</NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink to={"/patient/"+user.patientID+"/password-reset"} exact activeStyle={{fontWeight: "bold",color: "white"}} className="nav-link" style={{color: "white"}}>Reset Password</NavLink>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <NavLink to={"/patient/"+user.patientID+"/status"} exact activeStyle={{fontWeight: "bold",color: "white"}} className="nav-link"  style={{color: "white"}}>Status</NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink to={"/patient/"+user.patientID+"/requirements"} exact activeStyle={{fontWeight: "bold",color: "white"}} className="nav-link" style={{color: "white"}}>Pharmacy</NavLink>
-                    </li>
-                    <li class="nav-item">
-                        <NavLink to="http://localhost:3000"><button onClick={this.onLogoutClick} exact activeStyle={{fontWeight: "bold",color: "white"}} className="btn btn-large waves-effect waves-light hoverable blue accent-3" style={{color: "white", justifyContent: "right"}}>Logout</button></NavLink>
-                    </li>
-                </ul>
-                </div>
-            </div> */}
             </nav>
         )
     }

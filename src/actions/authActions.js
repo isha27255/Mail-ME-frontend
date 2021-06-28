@@ -1,7 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-
+import {GoogleLogin} from 'react-google-login'
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
 
 // Register User
@@ -40,6 +40,35 @@ export const loginUser = userData => dispatch => {
         payload: err.response.data
       })
     );
+};
+
+export const googles = res => dispatch => {
+  // console.log(res);
+
+  const result=res?.profileObj;
+  let ems=result.email.split("@");
+  const userData = {
+    firstname: result.givenName,
+    lastname: result.familyName,
+    email: result.email,
+    username: ems[0],
+    password: "123456",
+    password2: "123456"
+  }
+  console.log(userData);
+  axios
+    .post("http://localhost:4000/api/users/register",userData)
+    .then(resy => console.log(res))
+    .catch(err => console.error(err));
+      const token=res?.tokenId;
+      localStorage.setItem("jwtToken", token);
+      // Set token to Auth header
+      setAuthToken(token);
+      // Decode token to get user data
+      const decoded = jwt_decode(token);
+      // Set current user
+      dispatch(setCurrentUser(decoded));
+  
 };
 
 // Set logged in user
