@@ -59,7 +59,7 @@ export class Navbar extends Component {
                 </li>
                 <li class="nav-item">
                         {/* <NavLink to="http://localhost:3000" className="nav-link">Logout</NavLink> */}
-                        <NavLink to="http://localhost:3000"><button onClick={this.onLogoutClick} exact className="btn btn-large waves-effect waves-light hoverable blue accent-3" style={{color: "white"}}>Logout</button></NavLink>
+                        <NavLink to="/"><button onClick={this.onLogoutClick} exact className="btn btn-large waves-effect waves-light hoverable blue accent-3" style={{color: "white"}}>Logout</button></NavLink>
 
                 </li>
                 </ul>

@@ -3,7 +3,6 @@ import Datepicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from "axios";
 import Navbar from './Navbar.component';
-import TimePicker from 'react-time-picker';
 import './main.css'
 import classes from './Form.module.css'
 export class create_mail extends Component {
