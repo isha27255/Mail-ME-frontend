@@ -25,12 +25,13 @@ export class create_mail extends Component {
             to: "",
             cc: "",
             subject: "",
-            schedule: "",
+            schedule: 'recurring',
             date: new Date(),
             time: "",
             recur: 0,
             weekly_day: 0,
             mail_body: "",
+            schedule_list: ['recurring','weekly','monthly','yearly','others']
         }
     }
 
@@ -150,12 +151,17 @@ export class create_mail extends Component {
                     {/* <br></br> */}
                     <div className="form-group">
                         <label className="s">schedule : </label>
-                        <input 
-                        type="text"
+                        <select 
                         required
-                        className="form-control str"
+                        className="form-control x"
                         value={this.state.schedule}
-                        onChange={this.onChangeSchedule}></input>
+                        onChange={this.onChangeSchedule}>
+                            {
+                                this.state.schedule_list.map(function(schedule){
+                                    return <option key={schedule} value={schedule}>{schedule}</option>;
+                                })
+                            }
+                        </select>
                     </div>
                     {/* <br></br> */}
                     <div className="form-group">

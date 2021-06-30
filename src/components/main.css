@@ -43,6 +43,12 @@ input.form-control.str{
     border-bottom: 1px solid #fc0356;
     width: 80%;
 }
+select.form-control.x{
+    border: 1px solid #fc0356;
+    /* border-radius: 0; */
+    /* border-bottom: 1px solid #fc0356; */
+    width: 80%;
+}
 
 .navbar-custom{
     background-color:#fc0356;
