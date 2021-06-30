@@ -100,11 +100,12 @@ export class create_mail extends Component {
         console.log(mail);
         
         axios
-          .post(`http://localhost:4000/MAIL/${this.props.match.params.userid}/mail`,mail)
-          .then(res => console.log(res.data))
-          .catch(err => console.error(err));
-
-          window.location = '/landing';
+          .post(`https://mail-me-backend.herokuapp.com/MAIL/${this.props.match.params.userid}/mail`,mail)
+          .then(res => {
+            console.log(res.data)
+            window.location = '/landing';
+          } )
+          .catch(err => alert(err));
         // console.log(exc);
     }
     

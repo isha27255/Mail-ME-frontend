@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import jwt_decode from "jwt-decode";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js'
+// import 'bootstrap/dist/js/bootstrap.bundle';
+import '../../node_modules/bootstrap/dist/js/bootstrap.bundle'
 import  './main.css'
 export class Navbar extends Component {
 
@@ -24,7 +25,7 @@ export class Navbar extends Component {
 
         const token = localStorage.jwtToken;
         const decoded = jwt_decode(token);
-        fetch(`http://localhost:4000/USERS/${decoded.id}`)
+        fetch(`https://mail-me-backend.herokuapp.com/USERS/${decoded.id}`)
         .then((response) => response.json())
         .then((data2) => { 
             this.setState({username: data2.username});
@@ -35,9 +36,9 @@ export class Navbar extends Component {
        
         return (
             <nav class="navbar navbar-expand-lg navbar-custom">
-                <div class="container-fluid">
+                {/* <div class="container-fluid"> */}
                     <NavLink to="/landing" className="navbar-brand">MailMe</NavLink>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler custom-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -63,7 +64,7 @@ export class Navbar extends Component {
                 </li>
                 </ul>
                 </div>
-                </div>
+                {/* </div> */}
             </nav>
         )
     }

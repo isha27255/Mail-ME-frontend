@@ -7,7 +7,7 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
 // Register User
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("http://localhost:4000/api/users/register", userData)
+    .post("https://mail-me-backend.herokuapp.com/api/users/register", userData)
     .then(res => history.push("/login"))
     .catch(err =>
       dispatch({
@@ -20,7 +20,7 @@ export const registerUser = (userData, history) => dispatch => {
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios
-    .post("http://localhost:4000/api/users/login", userData)
+    .post("https://mail-me-backend.herokuapp.com/api/users/login", userData)
     .then(res => {
       // Save to localStorage
 
@@ -57,7 +57,7 @@ export const googles = res => dispatch => {
   }
   console.log(userData);
   axios
-    .post("http://localhost:4000/api/users/register",userData)
+    .post("https://mail-me-backend.herokuapp.com/api/users/register",userData)
     .then(resy => console.log(res))
     .catch(err => console.error(err));
       const token=res?.tokenId;

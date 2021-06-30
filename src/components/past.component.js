@@ -26,7 +26,7 @@ export class past extends Component {
         
         componentDidMount() {
             axios
-              .get(`http://localhost:4000/MAIL/${this.props.match.params.userid}/past-mails`)
+              .get(`https://mail-me-backend.herokuapp.com/MAIL/${this.props.match.params.userid}/past-mails`)
               .then(res => {
                   console.log(res)
                 this.setState({

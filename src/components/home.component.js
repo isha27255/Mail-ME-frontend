@@ -52,7 +52,7 @@ export class home extends Component {
     render() {
       const {REACT_APP_clientId} = process.env;
         return (
-            <div>
+            <div className={classes.full}>
                 <nav class="navbar navbar-expand-lg navbar-custom">
                  <NavLink to="/" exact className="navbar-brand">MailME</NavLink>
                 </nav>

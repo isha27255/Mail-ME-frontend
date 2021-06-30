@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
-a.nav-link.active, a.navbar-brand.active{
+a.nav-link.active{
 
     /* background-color: white; */
     /* text-decoration: underline; */
     border-bottom: 2px solid white;
     padding-bottom: 2px;
-    padding: 9px;
+    padding: 9px 0px;
 }
 
 a.navbar-brand, a.nav-link{
@@ -16,10 +16,14 @@ a.navbar-brand, a.nav-link{
     font-size: 20px;
     font-family: "Poppins";
     font-weight: bold;
+    text-align: center;
 }
 /* button.btn.btn-large.waves-effect.waves-light.hoverable.blue.accent-3{
     float: right;
 } */
+a.nav-link:hover{
+    color: white;
+}
 a.navbar-brand{
     background-color: white;
     padding: 9px;
@@ -48,7 +52,15 @@ input.form-control.str{
     /* margin-right: 0px; */
     font-size: 20px;
     font-weight: bold;
+    text-align: center;
+    font-family: 'Poppins';
     /* float: right; */
+}
+
+@media(max-width: 505px){
+    .btn{
+        margin-left: 40%;
+    }
 }
 
 span.navbar-toggler-icon{

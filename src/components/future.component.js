@@ -25,7 +25,7 @@ export class future extends Component {
         
         componentDidMount() {
             axios
-              .get(`http://localhost:4000/MAIL/${this.props.match.params.userid}/future-mails`)
+              .get(`https://mail-me-backend.herokuapp.com/MAIL/${this.props.match.params.userid}/future-mails`)
               .then(res => {
                   console.log(res)
                 this.setState({
