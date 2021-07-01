@@ -106,7 +106,7 @@
     justify-content: center;
     border-radius: 5px;
 }
-    @media(max-width: 505px)
+    @media(max-width: 699px)
     {
         .xyz{
             width: 142%;
@@ -128,7 +128,7 @@
       }
     }
     
-  @media(min-width: 506px) {
+  @media(min-width: 700px) {
     .xyz{
         width: 100%;
         height: auto;
