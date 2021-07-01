@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
-import Datepicker from "react-datepicker";
-import 'react-datepicker/dist/react-datepicker.css';
+// import Datepicker from "react-datepicker";
+// import 'react-datepicker/dist/react-datepicker.css';
 import axios from "axios";
 import Navbar from './Navbar.component';
 import './main.css'
 import classes from './Form.module.css'
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 export class create_mail extends Component {
 
     constructor(props) {
@@ -205,24 +211,44 @@ export class create_mail extends Component {
                         onChange={this.onChangeBody}></input>
                        
                     </div>
-                    {/* <br></br> */}
-                    {/* <br></br> */}
-                    <div className="form-group">
-                        <label className="s">Date : </label>
-                        <br></br>
-                       <Datepicker
-                       selected={this.state.date}
-                       onChange={this.onChangeDate}>
-                       </Datepicker>
-                    </div>
+                   
+                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                     <Grid>
                     <br></br>
-                 
+                     <label className="s">Date : &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                     <KeyboardDatePicker
+                         disableToolbar
+                         variant="inline"
+                         format="MM/dd/yyyy"
+                         margin="normal"
+                         id="date-picker-inline"
+                         value={this.state.date}
+                         onChange={this.onChangeDate}
+                         KeyboardButtonProps={{
+                           'aria-label': 'change date',
+                         }}
+                     />
+                     <br></br>
+                     {/* <label className="s">Time : &nbsp;&nbsp;&nbsp;</label>
+                      <KeyboardTimePicker
+                        margin="normal"
+                        id="time-picker"
+                        value={this.state.time}
+                        onChange={this.onChangeTime}
+                        KeyboardButtonProps={{
+                            'aria-label': 'change time',
+                        }}
+                     /> */}
+                       </Grid>
+                    </MuiPickersUtilsProvider>
+                  
+                     <br></br><br></br>
                     <div className="form-group">
                         <input type="submit" value="Send" className={classes.formsubmits}></input>
                     </div>
                     <br></br> <br></br> <br></br>
                 </form>
-                <br></br><br></br>
+                <br></br><br></br><br></br><br></br>
                 </div>
                  </div>
         )
