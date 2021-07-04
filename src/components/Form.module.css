@@ -169,8 +169,8 @@
 }
 .loginboxis{
     position: absolute;
-	margin-top: 880px;
-    height: 1600px;
+	margin-top: 800px;
+    height: 1450px;
 	left: 50%;
 	width: 70%;
 	padding: 40px;
@@ -184,8 +184,8 @@
 @media(max-width: 701px){
 
     .loginboxis{
-        height: 1650px;
-        width: 95%;
+        height: 1450px;
+        width: 85%;
     }
 
 }
@@ -238,10 +238,8 @@ th {
     font-family: "Poppins";
 }
 
-textarea.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-formControl.MuiInputBase-multiline.MuiInput-multiline{
-    width: 2000px !important;
-}
 
 div.sun-editor{
     width: 100%;
 }
+

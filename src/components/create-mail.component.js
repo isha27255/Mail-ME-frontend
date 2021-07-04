@@ -36,13 +36,13 @@ export class create_mail extends Component {
             to: "",
             cc: "",
             subject: "",
-            schedule: 'recurring',
+            schedule: 'Once',
             date: new Date(),
             time: "",
             recur: 0,
             weekly_day: 0,
             mail_body: "",
-            schedule_list: ['recurring','weekly','monthly','yearly','others']
+            schedule_list: ['Once','recurring','weekly','monthly','yearly']
         }
     }
 
@@ -175,17 +175,22 @@ export class create_mail extends Component {
                         </select>
                     </div>
                     {/* <br></br> */}
-                    <div className="form-group">
-                        <label className="s">recur time : </label>
-                        <input 
-                        type="text"
-                        required
-                        className="form-control str"
-                        value={this.state.recur}
-                        onChange={this.onChangeRecur}></input>
-                    </div>
+                    {this.state.schedule === "recurring" ? (
+                      <div className="form-group">
+                      <label className="s">recur time : </label>
+                      <input 
+                      type="text"
+                      required
+                      className="form-control str"
+                      value={this.state.recur}
+                      onChange={this.onChangeRecur}></input>
+                  </div>) : (
+                    <></>
+                  )}
+                    
                     {/* <br></br> */}
-                    <div className="form-group">
+                    {this.state.schedule !== 'recurring' ? (
+                        <div className="form-group">
                         <label className="s">Time : </label>
                         <input 
                         type="text"
@@ -193,17 +198,24 @@ export class create_mail extends Component {
                         className="form-control str"
                         value={this.state.time}
                         onChange={this.onChangeTime}></input>
-                    </div>
+                    </div>): (
+                      <></>
+                    )}
+                    
                     {/* <br></br> */}
-                    <div className="form-group">
-                        <label className="s">Weekly Day : </label>
-                        <input 
-                        type="text"
-                        required
-                        className="form-control str"
-                        value={this.state.weekly_day}
-                        onChange={this.onChangeWeeklyDay}></input>
-                    </div>
+                    {this.state.schedule === 'weekly'? (
+                      <div className="form-group">
+                      <label className="s">Weekly Day : </label>
+                      <input 
+                      type="text"
+                      required
+                      className="form-control str"
+                      value={this.state.weekly_day}
+                      onChange={this.onChangeWeeklyDay}></input>
+                  </div> ):(
+                    <></>
+                  )}
+                    
                     {/* <br></br> */}
                     {/* <div className="form-group">
                         <label className="s">Body : </label>
@@ -216,36 +228,29 @@ export class create_mail extends Component {
                         onChange={this.onChangeBody}></input>
                        
                     </div> */}
-                   
-                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                     <Grid>
-                    <br></br>
-                     <label className="s">Date : &nbsp;&nbsp;&nbsp;&nbsp;</label>
-                     <KeyboardDatePicker
-                         disableToolbar
-                         variant="inline"
-                         format="MM/dd/yyyy"
-                         margin="normal"
-                         id="date-picker-inline"
-                         value={this.state.date}
-                         onChange={this.onChangeDate}
-                         KeyboardButtonProps={{
-                           'aria-label': 'change date',
-                         }}
-                     />
+                   {this.state.schedule !== 'recurring' && this.state.schedule !== 'weekly' ? (
+                      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                      <Grid>
                      <br></br>
-                     {/* <label className="s">Time : &nbsp;&nbsp;&nbsp;</label>
-                      <KeyboardTimePicker
-                        margin="normal"
-                        id="time-picker"
-                        value={this.state.time}
-                        onChange={this.onChangeTime}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change time',
-                        }}
-                     /> */}
-                       </Grid>
-                    </MuiPickersUtilsProvider>
+                      <label className="s">Date : &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      <KeyboardDatePicker
+                          disableToolbar
+                          variant="inline"
+                          format="MM/dd/yyyy"
+                          margin="normal"
+                          id="date-picker-inline"
+                          value={this.state.date}
+                          onChange={this.onChangeDate}
+                          KeyboardButtonProps={{
+                            'aria-label': 'change date',
+                          }}
+                      />
+                      <br></br>
+                        </Grid>
+                     </MuiPickersUtilsProvider> ): (
+                       <></>
+                     )}
+                    
                   
                      <br></br><br></br>
                      <label className="s">Body : </label>
