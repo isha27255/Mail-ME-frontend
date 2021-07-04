@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
 // import Datepicker from "react-datepicker";
 // import 'react-datepicker/dist/react-datepicker.css';
+import SunEditor from 'suneditor-react';
+import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
 import axios from "axios";
 import Navbar from './Navbar.component';
 import './main.css'
 import classes from './Form.module.css'
 import Grid from '@material-ui/core/Grid';
+// import TextField from "@material-ui/core/TextField";
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+
+  
 export class create_mail extends Component {
 
     constructor(props) {
@@ -80,7 +85,7 @@ export class create_mail extends Component {
     }
     onChangeBody(e) {
         this.setState({
-          mail_body : e.target.value
+          mail_body : e
         });
     }
     onChangeDate(date) {
@@ -109,9 +114,9 @@ export class create_mail extends Component {
           .post(`https://mail-me-backend.herokuapp.com/MAIL/${this.props.match.params.userid}/mail`,mail)
           .then(res => {
             console.log(res.data)
-            window.location = '/landing';
+            // window.location = '/landing';
           } )
-          .catch(err => alert(err));
+          .catch(err => alert(`error is ${err}`));
         // console.log(exc);
     }
     
@@ -124,7 +129,7 @@ export class create_mail extends Component {
                     <br></br>
                 <h1 style={{textAlign: 'center'}}>Create New Mail</h1>
                 <br></br>
-                <form onSubmit={this.onSubmit} style={{marginLeft: '10%'}}>
+                <form onSubmit={this.onSubmit} style={{marginLeft: '5%', marginRight: '5%'}}>
                     <div className="form-group">
                         <label className="s">to : </label>
                         <input 
@@ -200,7 +205,7 @@ export class create_mail extends Component {
                         onChange={this.onChangeWeeklyDay}></input>
                     </div>
                     {/* <br></br> */}
-                    <div className="form-group">
+                    {/* <div className="form-group">
                         <label className="s">Body : </label>
                         
                         <input 
@@ -210,7 +215,7 @@ export class create_mail extends Component {
                         value={this.state.mail_body}
                         onChange={this.onChangeBody}></input>
                        
-                    </div>
+                    </div> */}
                    
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                      <Grid>
@@ -243,13 +248,152 @@ export class create_mail extends Component {
                     </MuiPickersUtilsProvider>
                   
                      <br></br><br></br>
+                     <label className="s">Body : </label>
+                 <SunEditor onInput={this.state.mail_body} onChange={this.onChangeBody}
+                    setOptions={{
+                        minHeight: "400px",
+                        maxHeight: "400px",
+                        maxWidth: "100%",
+                        buttonList: [
+                            // Default
+                            ["undo", "redo"],
+                            ["font", "fontSize", "formatBlock"],
+                            ["paragraphStyle", "blockquote"],
+                            [
+                              "bold",
+                              "underline",
+                              "italic",
+                              "strike",
+                              "subscript",
+                              "superscript",
+                            ],
+                            ["fontColor", "hiliteColor", "textStyle"],
+                            ["removeFormat"],
+                            ["outdent", "indent"],
+                            ["align", "horizontalRule", "list", "lineHeight"],
+                            ["table", "link", "image", "video", "audio"],
+                            ["fullScreen", "showBlocks", "codeView"],
+                            ["preview", "print"],
+                            ["save"],
+                            // (min-width:992px)
+                            [
+                              "%992",
+                              [
+                                ["undo", "redo"],
+                                [
+                                  ":p-More Paragraph-default.more_paragraph",
+                                  "font",
+                                  "fontSize",
+                                  "formatBlock",
+                                  "paragraphStyle",
+                                  "blockquote",
+                                ],
+                                ["bold", "underline", "italic", "strike"],
+                                [
+                                  ":t-More Text-default.more_text",
+                                  "subscript",
+                                  "superscript",
+                                  "fontColor",
+                                  "hiliteColor",
+                                  "textStyle",
+                                ],
+                                ["removeFormat"],
+                                ["outdent", "indent"],
+                                ["align", "horizontalRule", "list", "lineHeight"],
+                                [
+                                  "-right",
+                                  ":i-More Misc-default.more_vertical",
+                                  "fullScreen",
+                                  "showBlocks",
+                                  "codeView",
+                                  "preview",
+                                  "print",
+                                  "save",
+                                  "template",
+                                ],
+                                [
+                                  "-right",
+                                  ":r-More Rich-default.more_plus",
+                                  "table",
+                                  "link",
+                                  "image",
+                                  "video",
+                                  "audio",
+                                  "math",
+                                  "imageGallery",
+                                ],
+                              ],
+                            ],
+                            // (min-width:768px)
+                            [
+                              "%768",
+                              [
+                                ["undo", "redo"],
+                                [
+                                  ":p-More Paragraph-default.more_paragraph",
+                                  "font",
+                                  "fontSize",
+                                  "formatBlock",
+                                  "paragraphStyle",
+                                  "blockquote",
+                                ],
+                                [
+                                  ":t-More Text-default.more_text",
+                                  "bold",
+                                  "underline",
+                                  "italic",
+                                  "strike",
+                                  "subscript",
+                                  "superscript",
+                                  "fontColor",
+                                  "hiliteColor",
+                                  "textStyle",
+                                  "removeFormat",
+                                ],
+                                [
+                                  ":e-More Line-default.more_horizontal",
+                                  "outdent",
+                                  "indent",
+                                  "align",
+                                  "horizontalRule",
+                                  "list",
+                                  "lineHeight",
+                                ],
+                                [
+                                  ":r-More Rich-default.more_plus",
+                                  "table",
+                                  "link",
+                                  "image",
+                                  "video",
+                                  "audio",
+                                  "math",
+                                  "imageGallery",
+                                ],
+                                [
+                                  "-right",
+                                  ":i-More Misc-default.more_vertical",
+                                  "fullScreen",
+                                  "showBlocks",
+                                  "codeView",
+                                  "preview",
+                                  "print",
+                                  "save",
+                                  "template",
+                                ],
+                              ],
+                            ],
+                          ]
+                    }} ></SunEditor>
+                
+                    <br></br>
                     <div className="form-group">
                         <input type="submit" value="Send" className={classes.formsubmits}></input>
                     </div>
-                    <br></br> <br></br> <br></br>
+                    <br></br>
                 </form>
                 <br></br><br></br><br></br><br></br>
                 </div>
+                <br></br><br></br>           <br></br><br></br>
                  </div>
         )
     }

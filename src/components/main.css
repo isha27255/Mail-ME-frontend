@@ -41,13 +41,13 @@ input.form-control.str{
     border: none;
     border-radius: 0;
     border-bottom: 1px solid #fc0356;
-    width: 80%;
+    /* width: 80%; */
 }
 select.form-control.x{
     border: 1px solid #fc0356;
     /* border-radius: 0; */
     /* border-bottom: 1px solid #fc0356; */
-    width: 80%;
+    /* width: 80%; */
 }
 
 .navbar-custom{
@@ -89,4 +89,44 @@ span.navbar-toggler-icon{
 
 .MuiSvgIcon-root{
     color: #fc0356;
+}
+
+.sun-editor {
+  
+    border: 2px solid #fc0356 !important;
+    border-radius: 10px !important;
+    /* box-shadow: 0px 0px 20px #ffccbc !important; */
+    
+}
+.sun-editor .se-btn-module-border{
+    border: none !important;
+}
+.se-container{
+    border-radius: 10px !important;
+}
+.se-toolbar, .se-btn-tray, .se-menu-tray{
+    outline: none !important;
+    background-color: #ffccbc;
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+}
+.se-more-form, .se-btn {
+    outline: none !important;
+    background-color: #ffccbc;
+}
+.se-wrapper-inner{
+    height: 400px !important;
+    overflow-y: scroll !important;
+}
+.se-resizing-bar{
+    
+    background-color: #ffccbc!important;
+    border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+.se-char-counter-wrapper{
+    color:#111 !important;
+}
+.se-navigation{
+    color:#111 !important;
 }

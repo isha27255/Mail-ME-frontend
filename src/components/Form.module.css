@@ -169,20 +169,29 @@
 }
 .loginboxis{
     position: absolute;
-	margin-top: 650px;
-    height: 1200px;
+	margin-top: 880px;
+    height: 1600px;
 	left: 50%;
-	width: 80%;
+	width: 70%;
 	padding: 40px;
 	transform: translate(-50%, -50%);
 	background: white;
 	box-sizing: border-box;
-	box-shadow: 0 15px 25px rgba(0,0,0,.6);
+	box-shadow: 0 0px 8px #fc0356;
 	border-radius: 10px;
 }
 
+@media(max-width: 701px){
+
+    .loginboxis{
+        height: 1600px;
+        width: 95%;
+    }
+
+}
 @media(max-width: 505px){
    
+    
     img.imgs{
         display: none;
     }
@@ -227,4 +236,12 @@ th {
 
 .headss{
     font-family: "Poppins";
+}
+
+textarea.MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-formControl.MuiInput-formControl.MuiInputBase-multiline.MuiInput-multiline{
+    width: 2000px !important;
+}
+
+div.sun-editor{
+    width: 100%;
 }

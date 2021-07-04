@@ -50,7 +50,7 @@ export class Navbar extends Component {
                         <NavLink to={"/"+user.id+"/history"} className="nav-link">History</NavLink>
                 </li> 
                 <li class="nav-item">
-                        <NavLink to={"/createMail/"+user.id} className="nav-link">Create-Mail</NavLink>
+                        <NavLink to={"/createMail/"+user.id} className="nav-link">Compose</NavLink>
                 </li>
                 </ul>
                 <ul class="navbar-nav my-2 my-lg-0">
