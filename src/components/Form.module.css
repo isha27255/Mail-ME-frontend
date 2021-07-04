@@ -184,8 +184,11 @@
 @media(max-width: 701px){
 
     .loginboxis{
-        height: 1450px;
-        width: 85%;
+        height: 1480px;
+        width: 88%;
+    }
+    .loginboxs{
+        width: 340px;
     }
 
 }

@@ -62,7 +62,7 @@ class Login extends React.Component {
       <div className={classes.loginboxs}>
      <div className={classes.formouter}>
      <div>
-       <h1 className={classes.formh1}>Mailer Login</h1>
+       <h1 className={classes.formh1} style={{textAlign: 'center'}}>Mailer Login</h1>
        <br></br><br></br>
        <div>
            <form onSubmit = {this.onSubmit} >

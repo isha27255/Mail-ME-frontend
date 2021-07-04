@@ -129,7 +129,7 @@ export class create_mail extends Component {
                     <br></br>
                 <h1 style={{textAlign: 'center'}}>Create New Mail</h1>
                 <br></br>
-                <form onSubmit={this.onSubmit} style={{marginLeft: '5%', marginRight: '5%'}}>
+                <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label className="s">to : </label>
                         <input 
@@ -398,7 +398,7 @@ export class create_mail extends Component {
                 </form>
                 <br></br><br></br><br></br><br></br>
                 </div>
-                <br></br><br></br>           <br></br><br></br>
+                <br></br><br></br><br></br><br></br>
                  </div>
         )
     }
