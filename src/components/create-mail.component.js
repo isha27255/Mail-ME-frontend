@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import Datepicker from "react-datepicker";
-// import 'react-datepicker/dist/react-datepicker.css';
 import SunEditor from 'suneditor-react';
 import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
 import axios from "axios";
@@ -13,7 +11,9 @@ import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
+  KeyboardTimePicker
 } from '@material-ui/pickers';
+import jwt_decode from "jwt-decode";
 
   
 export class create_mail extends Component {
@@ -108,16 +108,18 @@ export class create_mail extends Component {
             weekly_day:this.state.weekly_day,
             mail_body:this.state.mail_body
         }
+        const token = localStorage.jwtToken;
+        const user = jwt_decode(token);
         console.log(mail);
         
         axios
-          .post(`https://mail-me-backend.herokuapp.com/MAIL/${this.props.match.params.userid}/mail`,mail)
+          .post(`https://mail-me-backend.herokuapp.com/MAIL/${user.id}/mail`,mail)
           .then(res => {
             console.log(res.data)
             // window.location = '/landing';
           } )
           .catch(err => alert(`error is ${err}`));
-        // console.log(exc);
+       
     }
     
     
@@ -128,6 +130,7 @@ export class create_mail extends Component {
                 <div className={classes.loginboxis}>
                     <br></br>
                 <h1 style={{textAlign: 'center'}}>Create New Mail</h1>
+                {/* <h2>{user.id}</h2> */}
                 <br></br>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
@@ -216,18 +219,6 @@ export class create_mail extends Component {
                     <></>
                   )}
                     
-                    {/* <br></br> */}
-                    {/* <div className="form-group">
-                        <label className="s">Body : </label>
-                        
-                        <input 
-                        type="text"
-                        required
-                        className="form-control str"
-                        value={this.state.mail_body}
-                        onChange={this.onChangeBody}></input>
-                       
-                    </div> */}
                    {this.state.schedule !== 'recurring' && this.state.schedule !== 'weekly' ? (
                       <MuiPickersUtilsProvider utils={DateFnsUtils}>
                       <Grid>
@@ -245,6 +236,8 @@ export class create_mail extends Component {
                             'aria-label': 'change date',
                           }}
                       />
+                      <br></br>
+                    
                       <br></br>
                         </Grid>
                      </MuiPickersUtilsProvider> ): (

@@ -4,6 +4,7 @@ import axios from "axios";
 import classes from './Form.module.css'
 import Table from 'react-bootstrap/Table'
 import './main.css'
+import jwt_decode from "jwt-decode";
  const Mails = props => (
         <tr>
             <td>{props.mail.to}</td>
@@ -24,8 +25,12 @@ export class future extends Component {
         }
         
         componentDidMount() {
+
+            const token = localStorage.jwtToken;
+            const user = jwt_decode(token);
+
             axios
-              .get(`https://mail-me-backend.herokuapp.com/MAIL/${this.props.match.params.userid}/future-mails`)
+              .get(`https://mail-me-backend.herokuapp.com/MAIL/${user.id}/future-mails`)
               .then(res => {
                   console.log(res)
                 this.setState({
@@ -52,7 +57,6 @@ export class future extends Component {
                 <h1 style={{marginTop: '30px', textAlign: 'center'}}>Future Schedules</h1>
                 <br></br>
                 <br></br>
-                {/* <table className="table table-bordered table-striped"> */}
                    <Table responsive="md" striped hover>
                     <thead className="thead-light">
                         <tr>

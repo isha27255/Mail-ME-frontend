@@ -4,7 +4,7 @@ import axios from "axios";
 import classes from './Form.module.css'
 import Table from 'react-bootstrap/Table'
 import './main.css'
-
+import jwt_decode from "jwt-decode";
  const Mails = props => (
         <tr>
             <td>{props.mail.to}</td>
@@ -25,8 +25,10 @@ export class past extends Component {
         }
         
         componentDidMount() {
+            const token = localStorage.jwtToken;
+            const user = jwt_decode(token);
             axios
-              .get(`https://mail-me-backend.herokuapp.com/MAIL/${this.props.match.params.userid}/past-mails`)
+              .get(`https://mail-me-backend.herokuapp.com/MAIL/${user.id}/past-mails`)
               .then(res => {
                   console.log(res)
                 this.setState({
